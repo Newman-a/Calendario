@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario Operativo 2026 - Newman</title>
+    <title>Planificador Newman 2026</title>
     <style>
         :root {
             --color-leonel: #ccffcc;
@@ -20,43 +20,96 @@
             --color-arianna: #e1bee7;
             --color-bianca: #ffccbc;
             --color-pago: #27ae60;
+            --bg-main: #f4f6f8;
+            --dark-blue: #2c3e50;
         }
 
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f4f6f8;
+            background: var(--bg-main);
             padding: 10px;
             color: #333;
             font-size: 13px;
+            margin: 0;
+        }
+
+        /* Navegación de Áreas */
+        .nav-container {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-bottom: 2px solid #ddd;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: 0.3s;
+            background: #eee;
+            color: #666;
+        }
+
+        .nav-btn.active {
+            color: white;
+        }
+
+        .nav-btn[data-area="des"].active {
+            background: var(--dark-blue);
+        }
+
+        .nav-btn[data-area="edi"].active {
+            background: #2980b9;
+        }
+
+        .nav-btn[data-area="dis"].active {
+            background: #8e44ad;
         }
 
         .area-container {
-            margin-bottom: 30px;
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s;
         }
 
+        .area-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Headers y Leyendas */
         .header-area {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #2c3e50;
+            background: var(--dark-blue);
             color: white;
             padding: 8px 20px;
             border-radius: 10px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-area h3 {
-            margin: 0;
-            font-size: 1em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-bottom: 15px;
         }
 
         .legend-panel {
             display: flex;
             gap: 5px;
-            padding: 5px;
         }
 
         .user-tag {
@@ -118,6 +171,7 @@
             background-color: var(--color-bianca);
         }
 
+        /* Estructura Calendario */
         .grid-calendario {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -133,9 +187,9 @@
 
         h2 {
             text-align: center;
-            color: #2c3e50;
+            color: var(--dark-blue);
             margin: 0 0 8px 0;
-            font-size: 1em;
+            font-size: 1.1em;
             border-bottom: 1px solid #eee;
             padding-bottom: 5px;
         }
@@ -153,13 +207,13 @@
         }
 
         td {
-            height: 48px;
+            height: 50px;
             text-align: center;
             border: 1px solid #f8f9fa;
             position: relative;
             vertical-align: top;
             padding-top: 5px;
-            font-size: 0.8em;
+            font-size: 0.85em;
         }
 
         .nombre-guardia {
@@ -175,13 +229,6 @@
             margin-right: auto;
         }
 
-        .dupla-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-            margin-top: 2px;
-        }
-
         .badge-edi {
             display: block;
             width: 90%;
@@ -193,6 +240,7 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
+        /* Pagos */
         .es-pago {
             box-shadow: inset 0 -4px 0 var(--color-pago);
         }
@@ -209,13 +257,15 @@
 
 <body>
 
-    <div style="text-align: center; margin-bottom: 20px;">
-        <h1 style="color: #2c3e50; font-size: 1.5em; margin:0;">Planificador de Guardias 2026</h1>
-    </div>
+    <nav class="nav-container">
+        <button class="nav-btn active" data-area="des" onclick="switchArea('des')">💻 DESARROLLO</button>
+        <button class="nav-btn" data-area="edi" onclick="switchArea('edi')">🎬 EDICIÓN</button>
+        <button class="nav-btn" data-area="dis" onclick="switchArea('dis')">🎨 DISEÑO</button>
+    </nav>
 
-    <div class="area-container">
+    <div id="area-des" class="area-container active">
         <div class="header-area">
-            <h3>💻 Desarrollo</h3>
+            <h3>Equipo de Desarrollo</h3>
             <div class="legend-panel">
                 <div class="user-tag p-leonel">Leonel</div>
                 <div class="user-tag p-roberto">Roberto</div>
@@ -226,9 +276,9 @@
         <div id="cal-des" class="grid-calendario"></div>
     </div>
 
-    <div class="area-container">
+    <div id="area-edi" class="area-container">
         <div class="header-area" style="background: #2980b9;">
-            <h3>🎬 Edición</h3>
+            <h3>Equipo de Edición</h3>
             <div class="legend-panel">
                 <div class="user-tag p-tito">Tito</div>
                 <div class="user-tag p-gerardo">Gerardo</div>
@@ -240,9 +290,9 @@
         <div id="cal-edi" class="grid-calendario"></div>
     </div>
 
-    <div class="area-container">
+    <div id="area-dis" class="area-container">
         <div class="header-area" style="background: #8e44ad;">
-            <h3>🎨 Diseño Gráfico</h3>
+            <h3>Equipo de Diseño</h3>
             <div class="legend-panel">
                 <div class="user-tag p-marietzy">Marietzy</div>
                 <div class="user-tag p-bianca">Bianca</div>
@@ -261,12 +311,23 @@
         ];
         const eqDis = ["Marietzy", "Bianca", "Arianna"];
 
-        // Fechas de inicio inamovibles
-        const anchorDes = { fecha: new Date(2026, 2, 14), index: 0 }; // 14 Mar: Leonel
-        const anchorEdi = { fecha: new Date(2026, 1, 21), index: 0 }; // 21 Feb: Tito y Gerardo
-        const anchorDis = { fecha: new Date(2026, 1, 21), index: 0 }; // 21 Feb: Marietzy
+        const anchorDes = { fecha: new Date(2026, 2, 14), index: 0 };
+        const anchorEdi = { fecha: new Date(2026, 1, 21), index: 0 };
+        const anchorDis = { fecha: new Date(2026, 1, 21), index: 0 };
+        const refPago = new Date(2026, 1, 13);
 
-        const refPago = new Date(2026, 1, 13); // Pago inicial 13 Feb
+        function switchArea(areaId) {
+            // Ocultar todas las áreas
+            document.querySelectorAll('.area-container').forEach(el => el.classList.remove('active'));
+            // Desactivar todos los botones
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Activar seleccionados
+            document.getElementById(`area-${areaId}`).classList.add('active');
+            document.querySelector(`.nav-btn[data-area="${areaId}"]`).classList.add('active');
+
+            window.scrollTo(0, 0);
+        }
 
         function getHTMLMes(mesIdx, area) {
             const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -279,27 +340,23 @@
                 let d = fecha.getDate(); let diaSem = fecha.getDay();
                 let clases = []; let content = `<strong>${d}</strong>`;
 
-                // Pago cada 15 días (Día 1 al 15)
                 const diffP = Math.round((fecha - refPago) / (1000 * 3600 * 24));
                 if (diffP >= 0 && diffP % 14 === 0) clases.push("es-pago");
 
                 if (diaSem === 6) {
-                    // Desarrollo (Desde 14 de Marzo)
                     if (area === 'des' && fecha >= new Date(2026, 2, 14)) {
                         const diff = Math.round((fecha - anchorDes.fecha) / (1000 * 3600 * 24 * 7));
                         let idx = (anchorDes.index + diff) % 4; if (idx < 0) idx += 4;
                         const p = eqDes[idx];
                         content += `<span class="nombre-guardia p-${p.toLowerCase()}">${p}</span>`;
                     }
-                    // Edición (Desde 21 de Febrero)
                     else if (area === 'edi' && fecha >= new Date(2026, 1, 21)) {
                         const diff = Math.round((fecha - anchorEdi.fecha) / (1000 * 3600 * 24 * 7));
                         let idx = (anchorEdi.index + diff) % 3; if (idx < 0) idx += 3;
                         const dupla = eqEdi[idx];
                         let badges = dupla.n.map((n, i) => `<span class="badge-edi ${dupla.c[i]}">${n}</span>`).join('');
-                        content += `<div class="dupla-wrapper">${badges}</div>`;
+                        content += `<div style="display:flex; flex-direction:column; gap:1px; margin-top:2px;">${badges}</div>`;
                     }
-                    // Diseño (Desde 21 de Febrero)
                     else if (area === 'dis' && fecha >= new Date(2026, 1, 21)) {
                         const diff = Math.round((fecha - anchorDis.fecha) / (1000 * 3600 * 24 * 7));
                         let idx = (anchorDis.index + diff) % 3; if (idx < 0) idx += 3;
@@ -315,12 +372,11 @@
         }
 
         function render() {
-            const ids = ['cal-des', 'cal-edi', 'cal-dis'];
             const areas = ['des', 'edi', 'dis'];
-            ids.forEach((id, i) => {
-                const el = document.getElementById(id);
+            areas.forEach(area => {
+                const el = document.getElementById(`cal-${area}`);
                 el.innerHTML = "";
-                for (let m = 0; m < 12; m++) el.innerHTML += getHTMLMes(m, areas[i]);
+                for (let m = 0; m < 12; m++) el.innerHTML += getHTMLMes(m, area);
             });
         }
         render();
