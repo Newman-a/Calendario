@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Operativo 2026 - Newman</title>
+    <style>
+        :root {
+            --color-leonel: #ccffcc;
+            --color-roberto: #ccccff;
+            --color-angelvis: #ffcccb;
+            --color-newman: #ffffcc;
+            --color-tito: #e1f5fe;
+            --color-gerardo: #ffe0b2;
+            --color-andrea: #f8bbd0;
+            --color-franco: #d1c4e9;
+            --color-eduardo: #c8e6c9;
+            --color-marietzy: #f0f4c3;
+            --color-arianna: #e1bee7;
+            --color-bianca: #ffccbc;
+            --color-pago: #27ae60;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 10px;
+            color: #333;
+            font-size: 13px;
+        }
+
+        .area-container {
+            margin-bottom: 30px;
+        }
+
+        .header-area {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #2c3e50;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-area h3 {
+            margin: 0;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .legend-panel {
+            display: flex;
+            gap: 5px;
+            padding: 5px;
+        }
+
+        .user-tag {
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.75em;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #333;
+        }
+
+        /* Colores */
+        .p-leonel {
+            background-color: var(--color-leonel);
+        }
+
+        .p-roberto {
+            background-color: var(--color-roberto);
+        }
+
+        .p-angelvis {
+            background-color: var(--color-angelvis);
+        }
+
+        .p-newman {
+            background-color: var(--color-newman);
+            border: 1px solid #f1c40f;
+        }
+
+        .p-tito {
+            background-color: var(--color-tito);
+        }
+
+        .p-gerardo {
+            background-color: var(--color-gerardo);
+        }
+
+        .p-andrea {
+            background-color: var(--color-andrea);
+        }
+
+        .p-franco {
+            background-color: var(--color-franco);
+        }
+
+        .p-eduardo {
+            background-color: var(--color-eduardo);
+        }
+
+        .p-marietzy {
+            background-color: var(--color-marietzy);
+        }
+
+        .p-arianna {
+            background-color: var(--color-arianna);
+        }
+
+        .p-bianca {
+            background-color: var(--color-bianca);
+        }
+
+        .grid-calendario {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+        }
+
+        .mes {
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin: 0 0 8px 0;
+            font-size: 1em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            font-size: 0.6em;
+            color: #999;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        td {
+            height: 48px;
+            text-align: center;
+            border: 1px solid #f8f9fa;
+            position: relative;
+            vertical-align: top;
+            padding-top: 5px;
+            font-size: 0.8em;
+        }
+
+        .nombre-guardia {
+            display: block;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-top: 3px;
+            line-height: 1.1;
+            border-radius: 3px;
+            padding: 2px 0;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dupla-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            margin-top: 2px;
+        }
+
+        .badge-edi {
+            display: block;
+            width: 90%;
+            padding: 1px 0;
+            border-radius: 3px;
+            margin: 0 auto;
+            font-size: 0.75em;
+            font-weight: bold;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .es-pago {
+            box-shadow: inset 0 -4px 0 var(--color-pago);
+        }
+
+        .es-pago::after {
+            content: "💰";
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            font-size: 0.7em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h1 style="color: #2c3e50; font-size: 1.5em; margin:0;">Planificador de Guardias 2026</h1>
+    </div>
+
+    <div class="area-container">
+        <div class="header-area">
+            <h3>💻 Desarrollo</h3>
+            <div class="legend-panel">
+                <div class="user-tag p-leonel">Leonel</div>
+                <div class="user-tag p-roberto">Roberto</div>
+                <div class="user-tag p-angelvis">Angelvis</div>
+                <div class="user-tag p-newman">Newman</div>
+            </div>
+        </div>
+        <div id="cal-des" class="grid-calendario"></div>
+    </div>
+
+    <div class="area-container">
+        <div class="header-area" style="background: #2980b9;">
+            <h3>🎬 Edición</h3>
+            <div class="legend-panel">
+                <div class="user-tag p-tito">Tito</div>
+                <div class="user-tag p-gerardo">Gerardo</div>
+                <div class="user-tag p-andrea">Andrea</div>
+                <div class="user-tag p-franco">Franco</div>
+                <div class="user-tag p-eduardo">Eduardo</div>
+            </div>
+        </div>
+        <div id="cal-edi" class="grid-calendario"></div>
+    </div>
+
+    <div class="area-container">
+        <div class="header-area" style="background: #8e44ad;">
+            <h3>🎨 Diseño Gráfico</h3>
+            <div class="legend-panel">
+                <div class="user-tag p-marietzy">Marietzy</div>
+                <div class="user-tag p-bianca">Bianca</div>
+                <div class="user-tag p-arianna">Arianna</div>
+            </div>
+        </div>
+        <div id="cal-dis" class="grid-calendario"></div>
+    </div>
+
+    <script>
+        const eqDes = ["Leonel", "Roberto", "Angelvis", "Newman"];
+        const eqEdi = [
+            { n: ["Tito", "Gerardo"], c: ["p-tito", "p-gerardo"] },
+            { n: ["Andrea", "Franco"], c: ["p-andrea", "p-franco"] },
+            { n: ["Eduardo"], c: ["p-eduardo"] }
+        ];
+        const eqDis = ["Marietzy", "Bianca", "Arianna"];
+
+        // Fechas de inicio inamovibles
+        const anchorDes = { fecha: new Date(2026, 2, 14), index: 0 }; // 14 Mar: Leonel
+        const anchorEdi = { fecha: new Date(2026, 1, 21), index: 0 }; // 21 Feb: Tito y Gerardo
+        const anchorDis = { fecha: new Date(2026, 1, 21), index: 0 }; // 21 Feb: Marietzy
+
+        const refPago = new Date(2026, 1, 13); // Pago inicial 13 Feb
+
+        function getHTMLMes(mesIdx, area) {
+            const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            let html = `<div class="mes"><h2>${meses[mesIdx]}</h2><table><tr><th>Lu</th><th>Ma</th><th>Mi</th><th>Ju</th><th>Vi</th><th>Sá</th><th>Do</th></tr><tr>`;
+            let fecha = new Date(2026, mesIdx, 1);
+            let offset = (fecha.getDay() === 0) ? 6 : fecha.getDay() - 1;
+            for (let i = 0; i < offset; i++) html += `<td></td>`;
+
+            while (fecha.getMonth() === mesIdx) {
+                let d = fecha.getDate(); let diaSem = fecha.getDay();
+                let clases = []; let content = `<strong>${d}</strong>`;
+
+                // Pago cada 15 días (Día 1 al 15)
+                const diffP = Math.round((fecha - refPago) / (1000 * 3600 * 24));
+                if (diffP >= 0 && diffP % 14 === 0) clases.push("es-pago");
+
+                if (diaSem === 6) {
+                    // Desarrollo (Desde 14 de Marzo)
+                    if (area === 'des' && fecha >= new Date(2026, 2, 14)) {
+                        const diff = Math.round((fecha - anchorDes.fecha) / (1000 * 3600 * 24 * 7));
+                        let idx = (anchorDes.index + diff) % 4; if (idx < 0) idx += 4;
+                        const p = eqDes[idx];
+                        content += `<span class="nombre-guardia p-${p.toLowerCase()}">${p}</span>`;
+                    }
+                    // Edición (Desde 21 de Febrero)
+                    else if (area === 'edi' && fecha >= new Date(2026, 1, 21)) {
+                        const diff = Math.round((fecha - anchorEdi.fecha) / (1000 * 3600 * 24 * 7));
+                        let idx = (anchorEdi.index + diff) % 3; if (idx < 0) idx += 3;
+                        const dupla = eqEdi[idx];
+                        let badges = dupla.n.map((n, i) => `<span class="badge-edi ${dupla.c[i]}">${n}</span>`).join('');
+                        content += `<div class="dupla-wrapper">${badges}</div>`;
+                    }
+                    // Diseño (Desde 21 de Febrero)
+                    else if (area === 'dis' && fecha >= new Date(2026, 1, 21)) {
+                        const diff = Math.round((fecha - anchorDis.fecha) / (1000 * 3600 * 24 * 7));
+                        let idx = (anchorDis.index + diff) % 3; if (idx < 0) idx += 3;
+                        const p = eqDis[idx];
+                        content += `<span class="nombre-guardia p-${p.toLowerCase()}">${p}</span>`;
+                    }
+                }
+                html += `<td class="${clases.join(' ')}">${content}</td>`;
+                if (fecha.getDay() === 0) html += `</tr><tr>`;
+                fecha.setDate(fecha.getDate() + 1);
+            }
+            return html + `</tr></table></div>`;
+        }
+
+        function render() {
+            const ids = ['cal-des', 'cal-edi', 'cal-dis'];
+            const areas = ['des', 'edi', 'dis'];
+            ids.forEach((id, i) => {
+                const el = document.getElementById(id);
+                el.innerHTML = "";
+                for (let m = 0; m < 12; m++) el.innerHTML += getHTMLMes(m, areas[i]);
+            });
+        }
+        render();
+    </script>
+</body>
+
+</html>
